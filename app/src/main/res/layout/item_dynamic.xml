@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/colorWhite"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp_15">
+
+    <ImageView
+        android:id="@+id/iv_user_photo"
+        android:layout_width="@dimen/dp_38"
+        android:layout_height="@dimen/dp_38"
+        android:layout_marginTop="@dimen/dp_4"
+        android:src="@drawable/ic_user_photo" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_toRightOf="@+id/iv_user_photo"
+        android:text="打酱油的日光灯 发表了评论"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_name"
+        android:layout_below="@+id/tv_name"
+        android:layout_marginTop="@dimen/dp_4"
+        android:text="1小时前"
+        android:textColor="@color/colorGray"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_time"
+        android:layout_marginTop="@dimen/dp_12"
+        android:lineSpacingExtra="@dimen/dp_5"
+        android:text="@string/app_message1"
+        android:textColor="@color/colorBlack" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_content"
+        android:layout_marginTop="@dimen/dp_12"
+        android:background="@drawable/bg_circle_gray_6"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/iv_zixun"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginBottom="@dimen/dp_15"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_15"
+            android:src="@drawable/ic_zixun" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_zixun"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_toRightOf="@+id/iv_zixun"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="支持社交多元化发展，不能一家独大,对广大用户有利"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/sp_16" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_title"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginTop="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="打酱油的日光灯"
+                android:textColor="#5d6da4"
+                android:textSize="@dimen/sp_14" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:drawablePadding="@dimen/dp_5"
+                android:text="636"
+                android:drawableLeft="@mipmap/kanguo"
+                android:textColor="@color/colorGray"
+                android:textSize="@dimen/sp_14" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:drawablePadding="@dimen/dp_5"
+                android:text="636"
+                android:drawableLeft="@mipmap/pinglun"
+                android:textColor="@color/colorGray"
+                android:textSize="@dimen/sp_14" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
