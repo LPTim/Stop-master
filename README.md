@@ -1,15 +1,15 @@
 # 不用涉及到各种冲突常规打造酷炫下拉视差效果SmartRefreshLayout+ViewPager+RecyclerView
 
-## [简书地址](https://www.jianshu.com/p/d35b5fa37b26) 
+## 查看具体实现方式简介，移步到 [简书地址](https://www.jianshu.com/p/d35b5fa37b26) 
 
 ## 快照
-![](https://github.com/LPTim/Stop-master/blob/master/snapshot/snapshot.gif)
+![](https://github.com/LPTim/Stop-master/tree/master/snapshot/snapshot.gif)
 
 ## 背景
 在很多APP上很常见，当我们真正想着手开发时，可能会遇到很多冲突问题，很难实现完美效果,于是我本着无聊的心态做了下，下面讲述下实现的一种常规方案，如果有不足的地方请大家提出，我将继续完善
 
 ## 演示程序
-下载 [Demo.apk](https://github.com/LPTim/Stop-master/tree/master/apk/app-debug.apk)
+下载 [app-debug](https://github.com/LPTim/Stop-master/tree/master/apk/app-debug.apk)
 
 ## 功能点简单说明
 1. 下拉整体刷新，上拉加载（上拉隶属于单个fragment）
