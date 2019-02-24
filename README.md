@@ -9,7 +9,7 @@
 在很多APP上很常见，当我们真正想着手开发时，可能会遇到很多冲突问题，很难实现完美效果,于是我本着无聊的心态做了下，下面讲述下实现的一种常规方案，如果有不足的地方请大家提出，我将继续完善
 
 ## 演示程序
-下载  [app-debug](raw.githubusercontent.com/LPTim/Stop-master/blob/master/apk/app-debug.apk)
+下载  [app-debug](https://raw.githubusercontent.com/LPTim/Stop-master/blob/master/apk/app-debug.apk)
 
 ## 功能点简单说明
 - 下拉整体刷新，上拉加载（上拉隶属于单个fragment）
