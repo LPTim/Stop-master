@@ -56,4 +56,6 @@ dependencies {
     implementation 'me.jessyan:autosize:1.0.6'
     //多字体
     api 'uk.co.chrisjenx:calligraphy:2.3.0'
+    //侧滑返回
+    implementation 'com.r0adkll:slidableactivity:2.0.6'
 }

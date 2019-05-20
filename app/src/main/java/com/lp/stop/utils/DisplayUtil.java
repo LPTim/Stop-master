@@ -1,5 +1,12 @@
 package com.lp.stop.utils;
 
+/**
+ * File descripition:
+ *
+ * @author lp
+ * @date 2019/5/18
+ */
+
 import android.content.Context;
 
 public class DisplayUtil {

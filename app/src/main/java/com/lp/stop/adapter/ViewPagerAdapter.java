@@ -1,10 +1,11 @@
 package com.lp.stop.adapter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.view.ViewGroup;
+
+import com.lp.stop.view.FragmentPagerAdapter;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * @date 2018/5/30
  */
 
-public class ViewPagerAdapter extends FragmentStatePagerAdapter {
+public class ViewPagerAdapter extends FragmentPagerAdapter {
     private List<Fragment> mFragments;
     private List<String> mStringTitle;
 

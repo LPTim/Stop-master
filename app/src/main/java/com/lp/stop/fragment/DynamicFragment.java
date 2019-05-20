@@ -1,5 +1,6 @@
 package com.lp.stop.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lp.stop.R;
+import com.lp.stop.activity.MainActivity;
 import com.lp.stop.adapter.DynamicAdapter;
 import com.lp.stop.utils.L;
 import com.lp.stop.view.RecycleViewDivider;
@@ -119,7 +121,7 @@ public class DynamicFragment extends BaseFragment implements BaseQuickAdapter.On
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        Toast.makeText(getActivity(), "点击了第" + position + "个", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(mContext, MainActivity.class));
     }
 
     @Override

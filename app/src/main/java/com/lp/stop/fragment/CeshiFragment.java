@@ -1,5 +1,6 @@
-package com.lp.stop.activity;
+package com.lp.stop.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Color;
@@ -7,7 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -15,20 +15,15 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lp.stop.R;
 import com.lp.stop.adapter.ViewPagerAdapter;
-import com.lp.stop.fragment.DynamicFragment;
 import com.lp.stop.utils.DisplayUtil;
 import com.lp.stop.utils.ScreenUtil;
 import com.lp.stop.utils.StatusBarUtil;
 import com.lp.stop.view.ColorFlipPagerTitleView;
 import com.lp.stop.view.SimpleMultiPurposeListener;
-import com.r0adkll.slidr.Slidr;
-import com.r0adkll.slidr.model.SlidrConfig;
-import com.r0adkll.slidr.model.SlidrInterface;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -49,10 +44,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class MainActivity extends AppCompatActivity implements OnRefreshListener, AppBarLayout.OnOffsetChangedListener {
+/**
+ * File descripition:
+ *
+ * @author lp
+ * @date 2019/5/18
+ */
+
+public class CeshiFragment extends BaseFragment implements OnRefreshListener, AppBarLayout.OnOffsetChangedListener {
     @BindView(R.id.magic_indicator)
     MagicIndicator mMagicIndicator;
     @BindView(R.id.appbar_layout)
@@ -87,18 +87,25 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
      * 屏幕宽度
      */
     private int mScreenWidth = 0;
-    private SlidrInterface slidrInterface;
+
+    public static CeshiFragment newInstance(String title) {
+        CeshiFragment mFragment = new CeshiFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putString("DATA", title);
+        mFragment.setArguments(bundle);
+
+        return mFragment;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //将头部状态栏置为透明
-        StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    protected int getLayoutId() {
+        return R.layout.fragment_ceshi;
+    }
 
-        initSlidable();
-
+    @SuppressLint("NewApi")
+    @Override
+    protected void initData() {
         //禁止上拉加载
         mRefreshLayout.setEnableLoadMore(false);
         mRefreshLayout.setOnRefreshListener(this);
@@ -106,59 +113,21 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
         mAppbarLayout.addOnOffsetChangedListener(this);
 
         //增加View的paddingTop,增加的值为状态栏高度 (智能判断，并设置高度)  titleBar
-        StatusBarUtil.setPaddingSmart(this, mToolbar);
-        StatusBarUtil.setPaddingSmart(this, mToolbar1);
+        StatusBarUtil.setPaddingSmart(mContext, mToolbar);
+        StatusBarUtil.setPaddingSmart(mContext, mToolbar1);
 
         //获得屏幕宽度
-        mScreenWidth = ScreenUtil.getScreenWidth(this);
+        mScreenWidth = ScreenUtil.getScreenWidth(mContext);
 
         initFragment();
         initMagicIndicator();
         initView();
 
-        mViewPagerAdapter = new ViewPagerAdapter(getFragmentManager(), mFragments, mTitleList);
+        mViewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager(), mFragments, mTitleList);
         mViewPager.setAdapter(mViewPagerAdapter);
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                if (position == 0) {
-                    if (slidrInterface != null) {
-                        slidrInterface.unlock();
-                    }
-                } else {
-                    if (slidrInterface != null) {
-                        slidrInterface.lock();
-                    }
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
 
     }
 
-    /**
-     * 初始化滑动返回
-     */
-    protected void initSlidable() {
-        SlidrConfig config = new SlidrConfig.Builder()
-                .edge(false)
-                .build();
-        slidrInterface = Slidr.attach(this, config);
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
 
     private void initView() {
         mRefreshLayout.setOnMultiPurposeListener(new SimpleMultiPurposeListener() {
@@ -172,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
                 if (offset <= 100) {
                     ViewGroup.LayoutParams layoutParams = mIvHeader.getLayoutParams();
                     layoutParams.width = (mScreenWidth + offset);
-                    ((ViewGroup.MarginLayoutParams) layoutParams).setMargins(-(layoutParams.width - mScreenWidth) / 2, -DisplayUtil.dip2px(MainActivity.this,200), 0, 0);
+                    ((ViewGroup.MarginLayoutParams) layoutParams).setMargins(-(layoutParams.width - mScreenWidth) / 2, -DisplayUtil.dip2px(mContext,200), 0, 0);
                     mIvHeader.requestLayout();
                 }
             }
@@ -190,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements OnRefreshListener
 
     private void initMagicIndicator() {
         mMagicIndicator.setBackgroundColor(getResources().getColor(R.color.colorWhite));
-        mCommonNavigator = new CommonNavigator(this);
+        mCommonNavigator = new CommonNavigator(mContext);
         mCommonNavigator.setAdjustMode(true);
         mCommonNavigator.setAdapter(new CommonNavigatorAdapter() {
             @Override
